@@ -4,16 +4,17 @@ public:
         if(s.size()!=t.size()){
             return false;
         }
-        unordered_map<char, int> v;
-        for(int i =0; i<s.size(); i++){
-            v[s[i]]++;
-            v[t[i]]--;
+        int count[26] = {0};
+        for(int i = 0; i < s.size(); i++){
+            count[s[i] - 'a']++;
+            count[t[i] - 'a']--;
         }
-        for(auto x :v){
-            if(x.second!=0){
+        for(int i = 0; i<26; i++){
+            if(count[i]!= 0){
                 return false;
             }
         }
         return true;
+        
     }
 };
